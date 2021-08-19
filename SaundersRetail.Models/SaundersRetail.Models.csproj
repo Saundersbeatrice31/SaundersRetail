@@ -54,27 +54,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InventorySale\InventorySaleCreate.cs" />
     <Compile Include="Inventory\InventoryCreate.cs" />
     <Compile Include="Inventory\InventoryDetail.cs" />
     <Compile Include="Inventory\InventoryEdit.cs" />
     <Compile Include="Inventory\InventoryListItem.cs" />
-    <Compile Include="Poduct\ProductCreate.cs" />
-    <Compile Include="Poduct\ProductDetail.cs" />
-    <Compile Include="Poduct\ProductEdit.cs" />
-    <Compile Include="Poduct\ProductListItem.cs" />
+    <Compile Include="ProductSaleData\ProductSaleDataCreate.cs" />
+    <Compile Include="ProductSale\ProductSaleCreate.cs" />
+    <Compile Include="Product\ProductCreate.cs" />
+    <Compile Include="Product\ProductDetail.cs" />
+    <Compile Include="Product\ProductEdit.cs" />
+    <Compile Include="Product\ProductListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaleDetail\SaleDetailCreate.cs" />
-    <Compile Include="SaleDetail\SaleDetailDetail.cs" />
-    <Compile Include="SaleDetail\SaleDetailEdit.cs" />
-    <Compile Include="SaleDetail\SaleDetailListItem.cs" />
+    <Compile Include="SaleData\SaleDataCreate.cs" />
+    <Compile Include="SaleData\SaleDataDetail.cs" />
+    <Compile Include="SaleData\SaleDataEdit.cs" />
+    <Compile Include="SaleData\SaleDataListItem.cs" />
     <Compile Include="Sale\SaleCreate.cs" />
     <Compile Include="Sale\SaleDetail.cs" />
     <Compile Include="Sale\SaleEdit.cs" />
     <Compile Include="Sale\SaleListItem.cs" />
-    <Compile Include="User\UserCreate.cs" />
-    <Compile Include="User\UserDetail.cs" />
-    <Compile Include="User\UserEdit.cs" />
-    <Compile Include="User\UserListItem.cs" />
+    <Compile Include="Cashier\CashierCreate.cs" />
+    <Compile Include="Cashier\CashierDetail.cs" />
+    <Compile Include="Cashier\CashierEdit.cs" />
+    <Compile Include="Cashier\CashierListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

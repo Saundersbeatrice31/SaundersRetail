@@ -57,13 +57,23 @@
     <Compile Include="InventoryService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaleDetailService.cs" />
+    <Compile Include="SaleDataService.cs" />
     <Compile Include="SaleService.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="CashierService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SaundersRetail.Data\SaundersRetail.Data.csproj">
+      <Project>{DFB3B786-E8F9-4256-B4CD-235E33BBDBCB}</Project>
+      <Name>SaundersRetail.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaundersRetail.Models\SaundersRetail.Models.csproj">
+      <Project>{6427E9F3-B5FB-4E7E-A93A-E6608DDE58A3}</Project>
+      <Name>SaundersRetail.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,10 +32,13 @@ namespace SaundersRetail.Data
             return new ApplicationDbContext();
         }
         public DbSet<Sale> Sales { get; set; }
-        public DbSet<SaleDetail> saleDetails { get; set; }
+        public DbSet<SaleData> saleData { get; set; }
         public DbSet<Product> products { get; set; }
-        public DbSet<User> users { get; set; }
+        public DbSet<Cashier> cashiers { get; set; }
         public DbSet<Inventory> inventories { get; set; }
+        public DbSet<ProductSale> ProductSales { get; set; }
+        public DbSet<ProductSaleData> ProductSaleDatas { get; set; }
+        public DbSet<InventorySale> InventorySales { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

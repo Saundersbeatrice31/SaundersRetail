@@ -8,5 +8,7 @@ namespace SaundersRetail.Models.Sale
 {
     public class SaleCreate
     {
-    }
+        public int SaleID { get; set; }
+        public DateTimeOffset SaleDate { get; set; }
+    }                        
 }

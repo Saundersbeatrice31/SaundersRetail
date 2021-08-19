@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using SaundersRetail.Models.ProductSale;
+using SaundersRetail.Models.Sale;
+using SaundersRetail.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,19 +10,27 @@ using System.Web.Mvc;
 
 namespace SaundersRetail.WebMVC.Controllers
 {
+    [Authorize]
     public class SaleController : Controller
     {
         // GET: Sale
         public ActionResult Index()
         {
-            
-            return View();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SaleService(userId);
+            var model = service.GetSales();
+            return View(model);
+
+           
         }
 
         // GET: Sale/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var svc = CreateSaleService();
+            var model = svc.GetSaleById(id);
+            return View(model);
+            
         }
 
         // GET: Sale/Create
@@ -29,62 +41,129 @@ namespace SaundersRetail.WebMVC.Controllers
 
         // POST: Sale/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SaleCreate model)
         {
             try
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                if (!ModelState.IsValid) return View(model);
+
+                var service = CreateSaleService();
+                if (service.CreateSale(model))
+                {
+                    TempData["SaveResult"] = "Your Sale was created.";
+                    return RedirectToAction("AddProductToSale", new { id = model.SaleID });
+                };
+                ModelState.AddModelError("", "The Sale could not be created.");
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
+        }
+        private SaleService CreateSaleService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SaleService(userId);
+            return service;
         }
 
         // GET: Sale/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var service = CreateSaleService();
+            var detail = service.GetSaleById(id);
+            var model =
+                new SaleEdit
+                { 
+                    SaleID = detail.SaleID,
+                    SubTotal = detail.SubTotal,
+                    Tax = detail.Tax,
+                    Total = detail.Total
+                };
+            return View(model);
         }
 
         // POST: Sale/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, SaleEdit model)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!ModelState.IsValid) return View(model);
+                if (model.SaleID != id)
+                {
+                    ModelState.AddModelError("", "id Mismatch");
+                    return View(model);
+                }
 
-                return RedirectToAction("Index");
+                var service = CreateSaleService();
+                if (service.UpdateSale(model))
+                {
+                    TempData["SaveResult"] = "Your Sale was Updated.";
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", "Your Sale could not be updated");
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
+        public ActionResult AddProductToSale (int id)
+        {
+            var model = new ProductSaleCreate()
+            {
+                SaleID = id
+                
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult AddProductToSale(int id, ProductSaleCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if (model.ID != id)
+            {
+                ModelState.AddModelError("", "id Mismatch");
+                return View(model);
+            }
+            var service = CreateSaleService();
+            if (service.CreateProductSale(model))
+            {
+                TempData["SaveResult"] = "Your product was added.";
+                return RedirectToAction("Index");                
+            }
+            return View(model);
+
+        }
+
 
         // GET: Sale/Delete/5
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var service = CreateSaleService();
+            var model = service.GetSaleById(id);
+            return View(model);
         }
 
         // POST: Sale/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, SaleDetail model )
+        {           
                 // TODO: Add delete logic here
+                var service = CreateSaleService();
+                service.DeleteSale(id);
+                TempData["SaveResult"] = "Your Sale was deleted";
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                return RedirectToAction("Index");                                      
         }
     }
 }

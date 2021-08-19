@@ -56,15 +56,35 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="InventorySale.cs" />
+    <Compile Include="Migrations\202108182014448_made alot of changes.cs" />
+    <Compile Include="Migrations\202108182014448_made alot of changes.Designer.cs">
+      <DependentUpon>202108182014448_made alot of changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108191839473_made changes to SaleData.cs" />
+    <Compile Include="Migrations\202108191839473_made changes to SaleData.Designer.cs">
+      <DependentUpon>202108191839473_made changes to SaleData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductSale.cs" />
+    <Compile Include="ProductSaleData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale.cs" />
-    <Compile Include="SaleDetail.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="SaleData.cs" />
+    <Compile Include="Cashier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202108182014448_made alot of changes.resx">
+      <DependentUpon>202108182014448_made alot of changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108191839473_made changes to SaleData.resx">
+      <DependentUpon>202108191839473_made changes to SaleData.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
