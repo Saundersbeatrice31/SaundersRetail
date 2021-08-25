@@ -1,54 +1,48 @@
 ﻿@model SaundersRetail.Models.ProductSale.ProductSaleCreate
 
+
 @{
     ViewBag.Title = "AddProductToSale";
 }
 
-<h2>AddProductToSale</h2>
+<h2>Add Product to Sale</h2>
 
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>ProductSaleCreate</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID", ViewBag.ProductNameSelectList as SelectList, "Select Product", htmlAttributes: new { @class = "control-label col-md-10" })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div> 
+        @Html.HiddenFor(model => model.SaleID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add to Cart" class="btn btn-default" />
+            </div>
         </div>
     </div>
-    @Html.HiddenFor(model => model.SaleID)
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

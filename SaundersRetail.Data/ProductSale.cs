@@ -14,12 +14,13 @@ namespace SaundersRetail.Data
         [ForeignKey(nameof (Product))]
         public int ID { get; set; }
         public virtual Product Product { get; set; }
-
         [Key, Column(Order = 1)]
         [ForeignKey(nameof(Sale))]
         public int SaleID { get; set; }
         public virtual Sale Sale { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
+        
+       
     }
 }

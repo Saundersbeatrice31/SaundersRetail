@@ -117,11 +117,23 @@ namespace SaundersRetail.WebMVC.Controllers
         public ActionResult AddProductToSale (int id)
         {
             var model = new ProductSaleCreate()
-            {
-                SaleID = id
-                
+           
+            {                  
+                SaleID = id                
             };
-            return View(model);
+            ViewBag.ProductNameSelectList = new SelectList(ProductDropDown(), "ID", "ProductName");            
+            return View(model);            
+        }
+        private  List<ProductSaleCreate> ProductDropDown()
+        {
+            var productNames = new List<ProductSaleCreate>();
+            productNames.Add(new ProductSaleCreate() { ID = 1, ProductName = "Shirts" });
+            productNames.Add(new ProductSaleCreate() { ID = 2, ProductName = "Shoes" });
+            productNames.Add(new ProductSaleCreate() { ID = 3, ProductName = "Purses" });
+            productNames.Add(new ProductSaleCreate() { ID = 4, ProductName = "Pants" });
+            productNames.Add(new ProductSaleCreate() { ID = 5, ProductName = "Shirts" });
+
+            return productNames;
         }
         [HttpPost]
         public ActionResult AddProductToSale(int id, ProductSaleCreate model)

@@ -16,7 +16,18 @@ namespace SaundersRetail.Data
         public Guid CashierID { get; set; }
         [Required]
         public DateTimeOffset SaleDate { get; set; }
-        public int Quantity { get; set; }
+        public int Quantity 
+        {
+            get
+            {
+                int quantity = 0;
+                foreach (var item in Sales)
+                {
+                    quantity -= (item.Product.QuantityInStock - Quantity);
+                }
+                return quantity;
+            }            
+        }
         [Required]
         public decimal SubTotal
         {

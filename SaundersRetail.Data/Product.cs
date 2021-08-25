@@ -21,7 +21,7 @@ namespace SaundersRetail.Data
         [Required]
         [Display(Name ="Price")]
         public decimal RetailPrice { get; set; }
-        public int QuantityInStock { get; set; }
+        public int QuantityInStock { get; set; }        
         public bool IsTaxable { get; set; } = true;
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? LastModified { get; set; }

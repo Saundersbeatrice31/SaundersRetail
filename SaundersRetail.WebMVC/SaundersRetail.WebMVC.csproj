@@ -184,6 +184,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assests\avada-fashion-1.jpg" />
+    <Content Include="Content\assests\avada-fashion.jpg" />
+    <Content Include="Content\assests\Blouse1.jpeg" />
+    <Content Include="Content\assests\boots.jpeg" />
+    <Content Include="Content\assests\Carousel 2.jpg" />
+    <Content Include="Content\assests\carousel 3.jpg" />
+    <Content Include="Content\assests\Carousel 4.jpg" />
+    <Content Include="Content\assests\Carousel 6.jpg" />
+    <Content Include="Content\assests\JeanPants.jpeg" />
+    <Content Include="Content\assests\outfit.jpeg" />
+    <Content Include="Content\assests\purse.jpeg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202108191839473_made changes to SaleData.Designer.cs">
       <DependentUpon>202108191839473_made changes to SaleData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108231504301_made changes to sales.cs" />
+    <Compile Include="Migrations\202108231504301_made changes to sales.Designer.cs">
+      <DependentUpon>202108231504301_made changes to sales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductSale.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108191839473_made changes to SaleData.resx">
       <DependentUpon>202108191839473_made changes to SaleData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108231504301_made changes to sales.resx">
+      <DependentUpon>202108231504301_made changes to sales.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
