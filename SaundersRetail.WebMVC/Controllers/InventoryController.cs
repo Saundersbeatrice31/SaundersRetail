@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SaundersRetail.WebMVC.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class InventoryController : Controller
     {
         // GET: Inventory
@@ -83,6 +84,7 @@ namespace SaundersRetail.WebMVC.Controllers
 
         // POST: Inventory/Edit/5
         [HttpPost]
+        
         public ActionResult Edit(int id, InventoryEdit model)
         {
             try

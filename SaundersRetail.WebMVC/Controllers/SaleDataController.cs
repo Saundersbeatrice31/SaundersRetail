@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SaundersRetail.WebMVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class SaleDataController : Controller
     {
         // GET: SaleData
