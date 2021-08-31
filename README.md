@@ -13,7 +13,9 @@ In the back office you'll find a suggested content structure for a working Retai
 To get started with the Vendr demo store you will need:
 
 Visual Studio 2019
+
 Bootstrap 3.4.1
+
 .NET SDK 4.7.2 or newer
 
 # Getting Started
