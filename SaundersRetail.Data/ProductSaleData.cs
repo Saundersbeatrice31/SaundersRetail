@@ -19,6 +19,8 @@ namespace SaundersRetail.Data
         [ForeignKey(nameof(SaleData))]
         public int? SDID { get; set; }
         public virtual SaleData SaleData { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
 
         
     }

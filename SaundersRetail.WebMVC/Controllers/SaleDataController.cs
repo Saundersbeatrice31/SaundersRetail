@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using SaundersRetail.Models.ProductSaleData;
 using SaundersRetail.Models.SaleData;
 using SaundersRetail.Services;
 using System;
@@ -52,7 +53,7 @@ namespace SaundersRetail.WebMVC.Controllers
             if (service.CreateSaleData(model))
             {
                 TempData["SaveResult"] = "Your Sales Data was created.";
-                return RedirectToAction("Index");
+                return RedirectToAction("AddProductToSaleData", new { id = model.SDID });
             };
             ModelState.AddModelError("", "The Sale Data could not be created.");
             return View(model);
@@ -126,6 +127,45 @@ namespace SaundersRetail.WebMVC.Controllers
             {
                 return View(model);
             }
+        }
+        public ActionResult AddProductToSaleData(int id)
+        {
+            var model = new ProductSaleDataCreate()
+
+            {
+                ID = id
+            };
+            ViewBag.ProductNameSelectList = new SelectList(ProductDropDown(), "ID", "ProductName");
+            return View(model);
+        }
+        private List<ProductSaleDataCreate> ProductDropDown()
+        {
+            var productNames = new List<ProductSaleDataCreate>();
+            productNames.Add(new ProductSaleDataCreate() { ID = 1, ProductName = "Shirts" });
+            productNames.Add(new ProductSaleDataCreate() { ID = 2, ProductName = "Shoes" });
+            productNames.Add(new ProductSaleDataCreate() { ID = 3, ProductName = "Purses" });
+            productNames.Add(new ProductSaleDataCreate() { ID = 4, ProductName = "Pants" });
+            productNames.Add(new ProductSaleDataCreate() { ID = 5, ProductName = "Shirts" });
+
+            return productNames;
+        }
+        [HttpPost]
+        public ActionResult AddProductToSale(int id, ProductSaleDataCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if (model.ID != id)
+            {
+                ModelState.AddModelError("", "id Mismatch");
+                return View(model);
+            }
+            var service = CreateSaleDataService();
+            if (service.CreateProductSaleData(model))
+            {
+                TempData["SaveResult"] = "Your product was added.";
+                return RedirectToAction("Index");
+            }
+            return View(model);
+
         }
     }
 }

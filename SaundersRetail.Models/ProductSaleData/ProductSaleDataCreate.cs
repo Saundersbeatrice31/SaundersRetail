@@ -10,6 +10,8 @@ namespace SaundersRetail.Models.ProductSaleData
     {
         public int ID { get; set; }
         public int SDID { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SaundersRetail.Data;
+using SaundersRetail.Models.ProductSaleData;
 using SaundersRetail.Models.SaleData;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,23 @@ namespace SaundersRetail.Services
                         .saleData
                         .Single(e => e.ProductID == saleDataId);
                 ctx.saleData.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool CreateProductSaleData(ProductSaleDataCreate model)
+        {
+            var entity =
+            new ProductSaleData()
+            {
+                ID = model.ID,
+                SDID = model.ID,
+                ProductName = model.ProductName,
+                Quantity = model.Quantity
+
+            };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.ProductSaleDatas.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

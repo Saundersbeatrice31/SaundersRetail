@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SaundersRetail.Data;
+using SaundersRetail.Models.Role;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,12 @@ namespace SaundersRetail.WebMVC.Controllers
             return View(Roles);
 
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+              
+        
         public bool isAdminUser()
         {
             if (User.Identity.IsAuthenticated)
