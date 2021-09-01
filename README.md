@@ -19,7 +19,7 @@ Bootstrap 3.4.1
 .NET SDK 4.7.2 or newer
 
 # Getting Started
-Clone or download this repository locally (it includes all the files you will need including a fully configured SQL CE database)
+Clone or download this repository locally. 
 
 git clone https://github.com/Saundersbeatrice31/SaundersRetail.git
 
